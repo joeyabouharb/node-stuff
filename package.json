@@ -1,0 +1,26 @@
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.3.0",
+    "duologue": "^1.0.0",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "path-to-regexp": "^6.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "parcel-cli": "^1.1.0"
+  }
+}

@@ -1,0 +1,7 @@
+forOf: The for loop function took 0.056 seconds to run.
+forIn: The for loop function took 0.066 seconds to run.
+for :The for loop function took 0.12 seconds to run.
+doWhileGenerator: The for loop function took 0.128 seconds to run.
+doWhile: The for loop function took 0.116 seconds to run.
+while: The for loop function took 0.08 seconds to run.
+forEach: The for loop function took 0.044 seconds to run.

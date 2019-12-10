@@ -1,0 +1,54 @@
+// CHALLENGE 1: Pokemon Pyramid Of Doom
+// Rewrite this code so it doesn't use a pyramid of doom. 
+// It should get six Pokemon & print their names to the browser's console. Use console.log on the completed array of Pokemon, not individual Pokemon.
+// The code should be shallow & DRY - think of how to repeatedly call a function.
+// Look to the "Callbacks and Callstacks" page on Canvas for examples.
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+ </head>
+<body>
+    <button id="button">Get 6 Pokemon</button>
+    <script>
+      const randint = function* (from, range) {
+        for (let start = 0; start < range; start += 1) {
+          yield Math.random() * (from + 1) | 0
+        }
+      }
+      const fetchPokemon = (id, lastid, callback) => {
+        var request = new XMLHttpRequest();
+        request.responseType = 'json';
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+        request.open('GET', url, true)
+        request.onload = function () {
+          return callback(request)
+        }
+        request.send();
+      }
+      const getPokemon = function (pokemons) {
+        for (const name of pokemons) {
+          console.log(name);
+        }
+      }
+        document.querySelector("#button").addEventListener("click", () => {
+          const pokemonStore = [];
+          const pokemonList = [...randint(808, 6)]
+
+          const lastPokemon = pokemonList.slice(pokemonList.length -1).pop()
+          console.log(lastPokemon)
+          console.log(pokemonList)
+          for(const id of pokemonList) {
+            fetchPokemon(id, lastPokemon, function ({ response, status }) {
+              pokemonStore.push(response.name);
+              if (id === lastPokemon && status === 200) {
+                getPokemon(pokemonStore);
+              }
+            });
+          }
+        });
+    </script>
+    <div id ='pokemon-data'>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0132)https://a9870-11889.cluster41.canvas-user-content.com/courses/9870~144/files/9870~11889/course%20files/unit_callbacks/callbacks.html -->
+<html lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Callbacks &amp; JSON</title>
+​
+  </head>
+  <body>
+​
+    <p>Empty HTML doc :) Some JS is running. Save me to your machine.</p>
+​
+    <script>
+
+    const getRandomUser = (callback) => {
+      const saveData = ((data) => {
+        return () => {
+          return data
+        }
+      });
+      var request = new XMLHttpRequest();
+      let result = null;
+      request.responseType = 'json';
+      request.open('GET', 'https://randomuser.me/api/', true);
+      request.onload = function () {
+        callback(request.response.results)
+      }
+      request.send();
+    }
+    const personStore = (payload) => {
+      for (const data of payload) {
+        const person = {
+          name: data.name,
+          gender: data.gender,
+          email: data.email,
+          date: data.dob.date,
+          age: data.dob.age,
+        }
+        console.log(person)
+      }
+    };
+
+    getRandomUser(personStore);
+    </script>
+  
+​
+</body></html>
